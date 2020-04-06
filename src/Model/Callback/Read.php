@@ -46,6 +46,6 @@ class Read
      */
     public static function create(array $payload)
     {
-        return new static($payload['watermark'], $payload['seq']);
+        return new static($payload['watermark'], isset($payload['seq'])? $payload['seq']: 0);
     }
 }

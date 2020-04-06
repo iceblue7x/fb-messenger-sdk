@@ -124,7 +124,7 @@ class Message
     {
     	return $this->hasLocation() ? $this->attachments[0]['payload']['coordinates']['lat'] : null;
     }
-    
+
     /**
      * @return string|null
      */
@@ -132,7 +132,7 @@ class Message
     {
     	return $this->hasLocation() ? $this->attachments[0]['payload']['coordinates']['long'] : null;
     }
-    
+
     /**
      * @param array $payload
      *
@@ -144,6 +144,6 @@ class Message
         $attachments = isset($payload['attachments']) ? $payload['attachments'] : [];
         $quickReply = isset($payload['quick_reply']) ? $payload['quick_reply']['payload'] : null;
 
-        return new static($payload['mid'], $payload['seq'], $text, $attachments, $quickReply);
+        return new static($payload['mid'], isset($payload['seq'])? $payload['seq']: 0, $text, $attachments, $quickReply);
     }
 }

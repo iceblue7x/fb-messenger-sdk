@@ -63,6 +63,6 @@ class Delivery
     public static function create(array $payload)
     {
         $mids = isset($payload['mids']) ? $payload['mids'] : [];
-        return new static($payload['watermark'], $payload['seq'], $mids);
+        return new static($payload['watermark'], isset($payload['seq'])? $payload['seq']: 0, $mids);
     }
 }

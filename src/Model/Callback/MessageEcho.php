@@ -73,6 +73,6 @@ class MessageEcho extends Message
         $text = isset($payload['text']) ? $payload['text'] : null;
         $attachments = isset($payload['attachments']) ? $payload['attachments'] : [];
 
-        return new static(true, $payload['app_id'], $payload['mid'], $payload['seq'], $metadata, $text, $attachments);
+        return new static(true, $payload['app_id'], $payload['mid'], isset($payload['seq'])? $payload['seq']: 0, $metadata, $text, $attachments);
     }
 }
